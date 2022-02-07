@@ -21,7 +21,7 @@
         </ul>
       </div>
     </div>
-    <div class="row pt-3" :class="{ 'flex-column': column }">
+    <div class="row p-3" :class="{ 'flex-column': column }">
       <div class="col-12 d-flex">
         <div class="mx-2" v-if="!locked">
           <i
@@ -49,15 +49,16 @@
         </div>
       </div>
       <div class="col" v-for="character in activeGroup.characters" :key="character.id">
-        <p>{{ character.name }}</p>
+        <Character :character="character" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { computed, ref, watchEffect } from "vue"
+import { computed, onMounted, ref, watchEffect } from "vue"
 import { AppState } from "../AppState"
+import { loadState } from "../utils/LocalStorage"
 
 
 export default {
@@ -66,6 +67,9 @@ export default {
     const column = ref(false)
     const locked = ref(false)
     const activeGroup = ref({})
+    onMounted(() => {
+      loadState()
+    })
     watchEffect(() => {
       activeGroup.value = AppState.groups[0]
     })

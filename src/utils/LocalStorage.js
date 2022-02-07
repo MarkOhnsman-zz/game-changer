@@ -1,11 +1,17 @@
 import { AppState } from "../AppState.js"
+import { Character } from "../models/Character.js"
 
 
 export function saveState() {
-  localStorage.setItem('SimpleStats', JSON.stringify({ AppState }))
+  localStorage.setItem('SimpleStats', JSON.stringify({ groups: AppState.groups }))
 }
 
 export function loadState() {
   let data = JSON.parse(localStorage.getItem('SimpleStats'))
-  AppState.groups = data.groups
+  if (data) {
+    data.groups.forEach(g => {
+      g.characters = g.characters.map(c => new Character(c))
+    })
+    AppState.groups = data.groups
+  }
 }

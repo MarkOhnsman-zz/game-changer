@@ -9,10 +9,12 @@ export const AppState = reactive({
       id: generateId(),
       name: 'The Pack',
       characters: [
-        new Character({ name: 'Dip', maxHp: 100, hp: 75, ac: 14 }),
+        new Character({ name: 'Dip', maxHp: 100, hp: 70, ac: 14 }),
         new Character({ name: 'Durpin', maxHp: 150, hp: 33, ac: 18 }),
         new Character({ name: 'Cholera', maxHp: 88, hp: 88, ac: 19 }),
-        new Character({ name: 'Beryl', maxHp: 49, hp: 3, ac: 13 })
+        new Character({ name: 'Beryl', maxHp: 49, hp: 3, ac: 13 }),
+        new Character({ name: 'Volinius', maxHp: 49, hp: 44, ac: 13 }),
+        new Character({ name: 'Yslanna', maxHp: 67, hp: 53, ac: 13 })
       ]
     },
     {

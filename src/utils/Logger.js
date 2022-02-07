@@ -1,18 +1,8 @@
-import { dev } from '../env'
-
 function log(type, content) {
-  if (dev) {
+  if (true) {
     // eslint-disable-next-line no-console
     console[type](`[${type}] :: ${new Date().toLocaleTimeString()} :: `, ...content)
   } else {
-    switch (type) {
-      case 'log':
-      case 'assert':
-        return
-    }
-    // TODO SEND LOGS TO EXTERNAL SERVICE
-    // eslint-disable-next-line no-console
-    console[type](`[${type}] :: ${new Date().toLocaleTimeString()} :: `, ...content)
   }
 }
 
